@@ -1,0 +1,564 @@
+{
+  "@context": {
+    "@vocab": "https://c2pa.org/crjson",
+    "extras": "https://c2pa.org/crjson/extras"
+  },
+  "manifests": [
+    {
+      "label": "urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9",
+      "assertions": {
+        "c2pa.ingredient": {
+          "dc:title": "Imported Ingredient",
+          "dc:format": "image/jpeg",
+          "instanceID": "xmp:iid:a254d220-c94c-4414-a1b8-1eca04bb9e2c",
+          "relationship": "componentOf",
+          "c2pa_manifest": {
+            "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8",
+            "alg": "sha256",
+            "hash": "b64'AlP2OF+B0O4Fg6Ie+/r4l7CaDUJ+Q8Gha/YxdqKEXlQ='",
+            "pad": "b64''"
+          }
+        },
+        "c2pa.ingredient__1": {
+          "dc:title": "Imported Ingredient",
+          "dc:format": "image/jpeg",
+          "instanceID": "xmp:iid:170dae68-c059-428d-bfa4-5dde83612fd6",
+          "relationship": "componentOf",
+          "c2pa_manifest": {
+            "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235",
+            "alg": "sha256",
+            "hash": "b64't3IUomSo69L92xOSfq4DwSAo+h7As2h6lpnsyKslJmU='",
+            "pad": "b64''"
+          }
+        },
+        "c2pa.actions": {
+          "actions": [
+            {
+              "action": "c2pa.edited",
+              "softwareAgent": "Adobe Firefly",
+              "digitalSourceType": "http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia"
+            }
+          ],
+          "metadata": {
+            "reviewRatings": [],
+            "dateTime": "2023-11-15T06:16:14.243Z"
+          }
+        },
+        "c2pa.hash.data": {
+          "exclusions": [
+            {
+              "start": 587472,
+              "length": 35046
+            }
+          ],
+          "name": "jumbf manifest",
+          "alg": "sha256",
+          "hash": "b64'fciLfC5HAZKg61YQKKluPgnti9IpTsFpBab6jzhHJiA='",
+          "pad": "b64'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='"
+        }
+      },
+      "claim": {
+        "instanceID": "xmp:iid:f2cdd589-204b-43c4-84bb-80775a407a34",
+        "signature": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.signature",
+        "claim_generator_info": [
+          {
+            "name": "Adobe_Express/1.0.0 adobe_c2pa/0.7.11 c2pa-rs/0.28.1"
+          }
+        ],
+        "alg": "sha256",
+        "dc:title": "Generated PDF: Untitled - November 15, 2023 at 11.42.21",
+        "claim_generator": "Adobe_Express/1.0.0 adobe_c2pa/0.7.11 c2pa-rs/0.28.1",
+        "dc:format": "application/pdf",
+        "assertions": [
+          {
+            "url": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.assertions/c2pa.ingredient",
+            "hash": "b64'QqUg8If683ZQ6veXpJ8t1HED4fJx7uonCq6RCNv0vIk='"
+          },
+          {
+            "url": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.assertions/c2pa.ingredient__1",
+            "hash": "b64'rb+ztI5E33QE8eAbp7CNVMPqIy2Sv5KdEUeOYnbURCA='"
+          },
+          {
+            "url": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.assertions/c2pa.actions",
+            "hash": "b64'2s+WREylMmpTANAJ8LQ96LSVGzF/2A1ggWNoRiuBSI8='"
+          },
+          {
+            "url": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.assertions/c2pa.hash.data",
+            "hash": "b64'SpfObJRQOTkCFNBA4DUyzRRoeOMfu5ZnxoJ2L8wA/Hg='"
+          }
+        ]
+      },
+      "signature": {
+        "algorithm": "ps256",
+        "certificateInfo": {
+          "serialNumber": "1b5b0b3bdab0e45df2f30d9e54d1dad2",
+          "issuer": {
+            "C": "US",
+            "O": "Adobe Systems Incorporated",
+            "OU": "Adobe Trust Services",
+            "CN": "Adobe Product Services G3"
+          },
+          "subject": {
+            "CN": "cai-prod",
+            "OU": "Content Credentials",
+            "O": "Adobe Inc.",
+            "L": "San Jose",
+            "ST": "California",
+            "C": "US"
+          },
+          "validity": {
+            "notBefore": "2023-02-01T00:00:00+00:00",
+            "notAfter": "2024-02-01T23:59:59+00:00"
+          }
+        },
+        "timeStampInfo": {
+          "timestamp": "2023-11-27T17:46:19+00:00",
+          "certificateInfo": {
+            "serialNumber": "51e9e91d71e910abbe43d5cedd0ddd9",
+            "issuer": {
+              "C": "US",
+              "O": "DigiCert, Inc.",
+              "CN": "DigiCert Trusted G4 RSA4096 SHA256 TimeStamping CA"
+            },
+            "subject": {
+              "C": "US",
+              "O": "DigiCert, Inc.",
+              "CN": "DigiCert Adobe AATL Timestamp Responder"
+            },
+            "validity": {
+              "notBefore": "2023-09-08T00:00:00+00:00",
+              "notAfter": "2034-12-07T23:59:59+00:00"
+            }
+          }
+        }
+      },
+      "validationResults": {
+        "success": [
+          {
+            "code": "timeStamp.validated",
+            "url": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.signature",
+            "explanation": "timestamp message digest matched: DigiCert Adobe AATL Timestamp Responder"
+          },
+          {
+            "code": "timeStamp.trusted",
+            "url": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.signature",
+            "explanation": "timestamp cert trusted: DigiCert Adobe AATL Timestamp Responder"
+          },
+          {
+            "code": "claimSignature.insideValidity",
+            "url": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.signature",
+            "explanation": "claim signature valid"
+          },
+          {
+            "code": "claimSignature.validated",
+            "url": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.signature",
+            "explanation": "claim signature valid"
+          },
+          {
+            "code": "assertion.hashedURI.match",
+            "url": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.assertions/c2pa.ingredient",
+            "explanation": "hashed uri matched: self#jumbf=c2pa.assertions/c2pa.ingredient"
+          },
+          {
+            "code": "assertion.hashedURI.match",
+            "url": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.assertions/c2pa.ingredient__1",
+            "explanation": "hashed uri matched: self#jumbf=c2pa.assertions/c2pa.ingredient__1"
+          },
+          {
+            "code": "assertion.hashedURI.match",
+            "url": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.assertions/c2pa.actions",
+            "explanation": "hashed uri matched: self#jumbf=c2pa.assertions/c2pa.actions"
+          },
+          {
+            "code": "assertion.hashedURI.match",
+            "url": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.assertions/c2pa.hash.data",
+            "explanation": "hashed uri matched: self#jumbf=c2pa.assertions/c2pa.hash.data"
+          },
+          {
+            "code": "assertion.dataHash.match",
+            "url": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.assertions/c2pa.hash.data",
+            "explanation": "data hash valid"
+          }
+        ],
+        "informational": [],
+        "failure": [],
+        "specVersion": "2.3.0",
+        "validationTime": "2026-09-24T00:53:50.964591+00:00"
+      },
+      "ingredientDeltas": [
+        {
+          "ingredientAssertionURI": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.assertions/c2pa.ingredient",
+          "validationDeltas": {
+            "success": [
+              {
+                "code": "ingredient.manifest.validated",
+                "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8",
+                "explanation": "ingredient hash matched"
+              },
+              {
+                "code": "timeStamp.validated",
+                "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.signature",
+                "explanation": "timestamp message digest matched: DigiCert Adobe AATL Timestamp Responder"
+              },
+              {
+                "code": "timeStamp.trusted",
+                "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.signature",
+                "explanation": "timestamp cert trusted: DigiCert Adobe AATL Timestamp Responder"
+              },
+              {
+                "code": "claimSignature.insideValidity",
+                "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.signature",
+                "explanation": "claim signature valid"
+              },
+              {
+                "code": "claimSignature.validated",
+                "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.signature",
+                "explanation": "claim signature valid"
+              },
+              {
+                "code": "assertion.hashedURI.match",
+                "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.assertions/c2pa.actions",
+                "explanation": "hashed uri matched: self#jumbf=c2pa.assertions/c2pa.actions"
+              },
+              {
+                "code": "assertion.hashedURI.match",
+                "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.assertions/c2pa.hash.data",
+                "explanation": "hashed uri matched: self#jumbf=c2pa.assertions/c2pa.hash.data"
+              }
+            ],
+            "informational": [],
+            "failure": []
+          }
+        },
+        {
+          "ingredientAssertionURI": "self#jumbf=/c2pa/urn:uuid:64c58246-c169-4004-9298-f2cc7a0164f9/c2pa.assertions/c2pa.ingredient__1",
+          "validationDeltas": {
+            "success": [
+              {
+                "code": "ingredient.manifest.validated",
+                "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235",
+                "explanation": "ingredient hash matched"
+              },
+              {
+                "code": "timeStamp.validated",
+                "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.signature",
+                "explanation": "timestamp message digest matched: DigiCert Adobe AATL Timestamp Responder"
+              },
+              {
+                "code": "timeStamp.trusted",
+                "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.signature",
+                "explanation": "timestamp cert trusted: DigiCert Adobe AATL Timestamp Responder"
+              },
+              {
+                "code": "claimSignature.insideValidity",
+                "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.signature",
+                "explanation": "claim signature valid"
+              },
+              {
+                "code": "claimSignature.validated",
+                "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.signature",
+                "explanation": "claim signature valid"
+              },
+              {
+                "code": "assertion.hashedURI.match",
+                "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.assertions/c2pa.actions",
+                "explanation": "hashed uri matched: self#jumbf=c2pa.assertions/c2pa.actions"
+              },
+              {
+                "code": "assertion.hashedURI.match",
+                "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.assertions/c2pa.hash.data",
+                "explanation": "hashed uri matched: self#jumbf=c2pa.assertions/c2pa.hash.data"
+              }
+            ],
+            "informational": [],
+            "failure": []
+          }
+        }
+      ]
+    },
+    {
+      "label": "urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8",
+      "assertions": {
+        "c2pa.actions": {
+          "actions": [
+            {
+              "action": "c2pa.created",
+              "softwareAgent": "Adobe Firefly Pipeline",
+              "parameters": {
+                "firefly.version": "1.0.5",
+                "firefly.operation": "text_to_image"
+              },
+              "digitalSourceType": "http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia"
+            }
+          ]
+        },
+        "c2pa.hash.data": {
+          "exclusions": [
+            {
+              "start": 20,
+              "length": 11382
+            }
+          ],
+          "name": "jumbf manifest",
+          "alg": "sha256",
+          "hash": "b64'ARjqGxbFXzRiFyVAcclPvoPFRXmQS2h0qAt2vyHlG6I='",
+          "pad": "b64'AAAAAAAAAAAA'"
+        }
+      },
+      "claim": {
+        "instanceID": "xmp:iid:5e287da5-1fb0-4087-ba0c-a282abb2e846",
+        "signature": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.signature",
+        "claim_generator_info": [
+          {
+            "name": "Adobe_Firefly adobe_c2pa/0.5.0 c2pa-rs/0.20.0"
+          }
+        ],
+        "alg": "sha256",
+        "dc:title": "Generated image",
+        "claim_generator": "Adobe_Firefly adobe_c2pa/0.5.0 c2pa-rs/0.20.0",
+        "dc:format": "image/jpeg",
+        "assertions": [
+          {
+            "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.assertions/c2pa.actions",
+            "hash": "b64'toCkBJlffVR7DPsVKmu+ezmD096cLZDiZNObiZ0uDgo='"
+          },
+          {
+            "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.assertions/c2pa.hash.data",
+            "hash": "b64'VLq4FqT2xpEM0P3Q282vUGmuJOICoyVmzX6IL98wOqM='"
+          }
+        ]
+      },
+      "signature": {
+        "algorithm": "ps256",
+        "certificateInfo": {
+          "serialNumber": "960c4c650b8fc7d64026b029679786",
+          "issuer": {
+            "C": "US",
+            "O": "Adobe Systems Incorporated",
+            "OU": "Adobe Trust Services",
+            "CN": "Adobe Product Services G3"
+          },
+          "subject": {
+            "CN": "firefly-prod",
+            "OU": "Content Credentials",
+            "O": "Adobe Inc.",
+            "L": "San Jose",
+            "ST": "California",
+            "C": "US"
+          },
+          "validity": {
+            "notBefore": "2023-07-14T00:00:00+00:00",
+            "notAfter": "2024-07-13T23:59:59+00:00"
+          }
+        },
+        "timeStampInfo": {
+          "timestamp": "2023-11-15T06:14:59+00:00",
+          "certificateInfo": {
+            "serialNumber": "51e9e91d71e910abbe43d5cedd0ddd9",
+            "issuer": {
+              "C": "US",
+              "O": "DigiCert, Inc.",
+              "CN": "DigiCert Trusted G4 RSA4096 SHA256 TimeStamping CA"
+            },
+            "subject": {
+              "C": "US",
+              "O": "DigiCert, Inc.",
+              "CN": "DigiCert Adobe AATL Timestamp Responder"
+            },
+            "validity": {
+              "notBefore": "2023-09-08T00:00:00+00:00",
+              "notAfter": "2034-12-07T23:59:59+00:00"
+            }
+          }
+        }
+      },
+      "validationResults": {
+        "success": [
+          {
+            "code": "ingredient.manifest.validated",
+            "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8",
+            "explanation": "ingredient hash matched"
+          },
+          {
+            "code": "timeStamp.validated",
+            "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.signature",
+            "explanation": "timestamp message digest matched: DigiCert Adobe AATL Timestamp Responder"
+          },
+          {
+            "code": "timeStamp.trusted",
+            "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.signature",
+            "explanation": "timestamp cert trusted: DigiCert Adobe AATL Timestamp Responder"
+          },
+          {
+            "code": "claimSignature.insideValidity",
+            "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.signature",
+            "explanation": "claim signature valid"
+          },
+          {
+            "code": "claimSignature.validated",
+            "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.signature",
+            "explanation": "claim signature valid"
+          },
+          {
+            "code": "assertion.hashedURI.match",
+            "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.assertions/c2pa.actions",
+            "explanation": "hashed uri matched: self#jumbf=c2pa.assertions/c2pa.actions"
+          },
+          {
+            "code": "assertion.hashedURI.match",
+            "url": "self#jumbf=/c2pa/urn:uuid:1ae185fc-88ff-467d-abbf-f7ec96aaaea8/c2pa.assertions/c2pa.hash.data",
+            "explanation": "hashed uri matched: self#jumbf=c2pa.assertions/c2pa.hash.data"
+          }
+        ],
+        "informational": [],
+        "failure": [],
+        "specVersion": "2.3.0",
+        "validationTime": "2026-09-24T00:53:50.964591+00:00"
+      }
+    },
+    {
+      "label": "urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235",
+      "assertions": {
+        "c2pa.actions": {
+          "actions": [
+            {
+              "action": "c2pa.created",
+              "softwareAgent": "Adobe Firefly Pipeline",
+              "parameters": {
+                "firefly.operation": "text_to_image",
+                "firefly.version": "1.0.5"
+              },
+              "digitalSourceType": "http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia"
+            }
+          ]
+        },
+        "c2pa.hash.data": {
+          "exclusions": [
+            {
+              "start": 20,
+              "length": 11382
+            }
+          ],
+          "name": "jumbf manifest",
+          "alg": "sha256",
+          "hash": "b64'u6hRJGjTwHTkbH2FsEiQLQ+HQD8y2Wz/V4jIseal7IU='",
+          "pad": "b64'AAAAAAAAAAAA'"
+        }
+      },
+      "claim": {
+        "instanceID": "xmp:iid:ff6f6eb7-250e-4da3-ba58-e207876ff88b",
+        "signature": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.signature",
+        "claim_generator_info": [
+          {
+            "name": "Adobe_Firefly adobe_c2pa/0.5.0 c2pa-rs/0.20.0"
+          }
+        ],
+        "alg": "sha256",
+        "dc:title": "Generated image",
+        "claim_generator": "Adobe_Firefly adobe_c2pa/0.5.0 c2pa-rs/0.20.0",
+        "dc:format": "image/jpeg",
+        "assertions": [
+          {
+            "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.assertions/c2pa.actions",
+            "hash": "b64'WgahjjpDgI3v3ioxXExHVdEtevoqdH2h+UtVU1mg0nQ='"
+          },
+          {
+            "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.assertions/c2pa.hash.data",
+            "hash": "b64'Oj6ivoAnCK3OgKkPb3KISOfvvt8b+bwiYN0g5XFfd6c='"
+          }
+        ]
+      },
+      "signature": {
+        "algorithm": "ps256",
+        "certificateInfo": {
+          "serialNumber": "960c4c650b8fc7d64026b029679786",
+          "issuer": {
+            "C": "US",
+            "O": "Adobe Systems Incorporated",
+            "OU": "Adobe Trust Services",
+            "CN": "Adobe Product Services G3"
+          },
+          "subject": {
+            "CN": "firefly-prod",
+            "OU": "Content Credentials",
+            "O": "Adobe Inc.",
+            "L": "San Jose",
+            "ST": "California",
+            "C": "US"
+          },
+          "validity": {
+            "notBefore": "2023-07-14T00:00:00+00:00",
+            "notAfter": "2024-07-13T23:59:59+00:00"
+          }
+        },
+        "timeStampInfo": {
+          "timestamp": "2023-11-15T06:15:42+00:00",
+          "certificateInfo": {
+            "serialNumber": "51e9e91d71e910abbe43d5cedd0ddd9",
+            "issuer": {
+              "C": "US",
+              "O": "DigiCert, Inc.",
+              "CN": "DigiCert Trusted G4 RSA4096 SHA256 TimeStamping CA"
+            },
+            "subject": {
+              "C": "US",
+              "O": "DigiCert, Inc.",
+              "CN": "DigiCert Adobe AATL Timestamp Responder"
+            },
+            "validity": {
+              "notBefore": "2023-09-08T00:00:00+00:00",
+              "notAfter": "2034-12-07T23:59:59+00:00"
+            }
+          }
+        }
+      },
+      "validationResults": {
+        "success": [
+          {
+            "code": "ingredient.manifest.validated",
+            "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235",
+            "explanation": "ingredient hash matched"
+          },
+          {
+            "code": "timeStamp.validated",
+            "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.signature",
+            "explanation": "timestamp message digest matched: DigiCert Adobe AATL Timestamp Responder"
+          },
+          {
+            "code": "timeStamp.trusted",
+            "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.signature",
+            "explanation": "timestamp cert trusted: DigiCert Adobe AATL Timestamp Responder"
+          },
+          {
+            "code": "claimSignature.insideValidity",
+            "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.signature",
+            "explanation": "claim signature valid"
+          },
+          {
+            "code": "claimSignature.validated",
+            "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.signature",
+            "explanation": "claim signature valid"
+          },
+          {
+            "code": "assertion.hashedURI.match",
+            "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.assertions/c2pa.actions",
+            "explanation": "hashed uri matched: self#jumbf=c2pa.assertions/c2pa.actions"
+          },
+          {
+            "code": "assertion.hashedURI.match",
+            "url": "self#jumbf=/c2pa/urn:uuid:6d4b57b0-bd89-4774-a3d1-79960c387235/c2pa.assertions/c2pa.hash.data",
+            "explanation": "hashed uri matched: self#jumbf=c2pa.assertions/c2pa.hash.data"
+          }
+        ],
+        "informational": [],
+        "failure": [],
+        "specVersion": "2.3.0",
+        "validationTime": "2026-09-24T00:53:50.964591+00:00"
+      }
+    }
+  ],
+  "jsonGenerator": {
+    "name": "c2pa-rs",
+    "version": "0.90.14"
+  }
+}
