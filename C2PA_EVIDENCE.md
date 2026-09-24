@@ -129,3 +129,44 @@ PDF, JPEG, TIFF, GIF, AVIF, JXL, MP4, MOV, AVI, WAV, and detached C2PA manifest 
 - C2PA Conformance: https://c2pa.org/conformance/
 - Trust list: https://github.com/c2pa-org/conformance-public/tree/main/trust-list
 - Open-source tools: https://opensource.contentauthenticity.org/docs/conformance/
+
+## Conformance Program submission — record 01a0d0e4-b6c7-73e8-84ff-7442cf014805
+
+| | |
+|---|---|
+| Intake Form submitted | **2026-09-23** |
+| Accepted, record ID issued | **2026-09-24** by the Conformance Program Administrator |
+| **Record ID** | **`01a0d0e4-b6c7-73e8-84ff-7442cf014805`** — this becomes our entry on the Conforming Products List if the submission is deemed conformant |
+| Asserted | specification **2.2** · `image/jpeg` · `application/pdf` |
+| Sample evidence sent | **2026-09-24**, four files, in the Administrator's naming convention |
+| Status | **in the assessment queue** |
+
+**What was sent**, built by `scripts/build_conformance_evidence.py` into
+`for-c2pa-submission/`:
+
+```
+a-sample.jpeg          a-sample.crjson.json      image/jpeg
+b-sample.pdf           b-sample.crjson.json      application/pdf
+```
+
+**Both samples are vectors the 2.2 tree itself lists**, which matters because we asserted
+2.2 and our own harness holds them under a `legacy-1.4` directory name: the 2.2 image README
+names `adobe-20220124-C`, and the 2.2 PDF README names
+`adobe-20240110-single_manifest_store`. Checked 2026-09-24.
+
+**Verified before sending**, from the submission folder rather than the originals:
+
+- `a-sample.jpeg` → `credential_valid`, state Valid, issuer *C2PA Test Signing Cert*
+- `b-sample.pdf` → `credential_valid`, state Valid, issuer *Adobe Inc.*
+- **Identical with `verify_trust` on and off**, re-tested in **separate processes** because
+  `load_settings` is deprecated and could cache within one. So nothing in the evidence
+  depends on how the assessor configures trust.
+- Both `.crjson.json` files are valid JSON carrying `@context` / `jsonGenerator` / `manifests`.
+
+**Not raised in that thread, deliberately:** the text-scope question of 21 September is still
+open. Mixing an unresolved scope question into an evidence submission gives an assessor a
+reason to pause the queue. The threads stay apart until one of them closes.
+
+**Open:** the reply's closing line offers evidence for additional media types. If we intend to
+widen beyond `image/jpeg` and `application/pdf`, doing it before assessment completes is
+cheaper than amending a listed record.

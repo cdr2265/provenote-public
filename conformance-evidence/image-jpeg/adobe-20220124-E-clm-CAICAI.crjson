@@ -279,7 +279,7 @@
           }
         ],
         "specVersion": "2.3.0",
-        "validationTime": "2026-09-24T00:53:50.952776+00:00"
+        "validationTime": "2026-09-24T16:13:44.794145+00:00"
       },
       "ingredientDeltas": [
         {
@@ -510,7 +510,7 @@
         "informational": [],
         "failure": [],
         "specVersion": "2.3.0",
-        "validationTime": "2026-09-24T00:53:50.953568+00:00"
+        "validationTime": "2026-09-24T16:13:44.795094+00:00"
       }
     }
   ],

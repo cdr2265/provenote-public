@@ -34,8 +34,8 @@
 | C25 | "An authorship record only helps if it exists before the question is asked" (`/methodology.html`) | We state that a signed draft chain cannot be reconstructed after the fact, and we do not offer to do so | `ledger.py` chains drafts forward only; matches the standing rule in `CLAUDE.md` | **substantiated (a guard)** |
 | C26 | "No tool can tell you which essays were written by AI, including ours" (`/universities.html`) | An explicit refusal, paired on the same page with the contested state of the evidence (C19 both ways) and Vanderbilt's own arithmetic (C8b) | Cites Liang et al. *Patterns* 2023 **and** the Feb 2026 Czech preprint that found no systematic bias, so the disconfirming result ships with the claim | **substantiated (a guard)** |
 | C27 | "Our engine can run inside your own environment" (`/universities.html`) | Stated as architecture, not availability: no database, no state, nothing written to disk. The page says outright it is **not yet packaged as an installable product** and there is no hosted service | `provenance_verify/api.py` is stdlib-only and stateless. **Updated 2026-09-23:** the engine is now deployed at `api.provenote.us`, so `BETA_CAPABILITY.md` no longer says "not deployed anywhere". The claim is unaffected — it is about running inside *your* environment, and the page still states outright that there is no installable package | **partial — capability real, packaging explicitly disclaimed on the page** |
-| C20 | "We do not claim that a watermark survives any given attack, or that it identifies a specific asset" | No Provenote surface asserts watermark robustness, payload capacity, or asset-level identification from a soft binding. If we ever do, the **error-corrected** bit budget and the collision bound are the disconfirming fields and must be stated with the claim | No such claim exists in `web/build.mjs`, the report copy or `BETA_CAPABILITY.md`; the constraints and their numbers are in "External constraint — C2PA Watermarking Task Force" below | **substantiated (a guard, not a capability)** |
-| C21 | "A watermark can always be removed. Provenance is opt-in, not tamper-proof" | We never describe a watermark, a soft binding or a Content Credential as indelible, permanent, unremovable or tamper-proof — only as **tamper-evident**, which is a different and weaker claim we can actually support | Collomosse, C2PA Watermarking TF 2026-09-16: "it is always possible to remove a watermark — the goal is to do so whilst preserving content". C6 is deliberately worded *tamper-evident* | **substantiated (a guard)** |
+| C20 | "We do not claim that a watermark survives any given attack, or that it identifies a specific asset" | No Provenote surface asserts watermark robustness, payload capacity, or asset-level identification from a soft binding. If we ever do, the **error-corrected** bit budget and the collision bound are the disconfirming fields and must be stated with the claim | No such claim exists in `web/build.mjs`, the report copy or `BETA_CAPABILITY.md`; the constraints and their numbers are held internally | **substantiated (a guard, not a capability)** |
+| C21 | "A watermark can always be removed. Provenance is opt-in, not tamper-proof" | We never describe a watermark, a soft binding or a Content Credential as indelible, permanent, unremovable or tamper-proof — only as **tamper-evident**, which is a different and weaker claim we can actually support | **Checkable on our own surfaces, which is the point:** "tamper-proof", "tamperproof", "indelible", "unremovable", "permanent record" and "cannot be removed" return **zero occurrences across ten live pages of provenote.us**, verified 2026-09-23. C6 is deliberately worded *tamper-evident* | **substantiated (a guard)** |
 
 ## Standing rules
 1. **Performance claims carry their conditions** (corpus, length, threshold) inline or one click away.
@@ -237,98 +237,63 @@ on every run (see `routines/DETECTOR_BASELINE.md`), so nobody has to remember to
 on the Conforming Products List. Not on application, not on membership, not on passing our own
 tests.
 
-### External constraint — C2PA Watermarking Task Force, 2026-09-16
+### External constraints on what we may claim about watermarks
 
-Aethyia attended the C2PA Watermarking Task Force call of 16 September 2026 (recorded;
-11–15 attendees; Dom Guinard chairing). This section exists because the call produced
-**numbers that bind what Provenote may claim about watermarks**, and because the one thing
-it did *not* produce was a decision.
+Some of what limits our watermark claims comes from C2PA task force participation. **Those
+notes are internal and are not reproduced here**: C2PA discussions and materials are subject
+to C2PA's IP and confidentiality policies and are not ours to publish. They live in
+`docs/C2PA_TF_NOTES_PRIVATE.md`, which is deliberately excluded from the public repository.
 
-**🔴 NOT DECIDED — do not describe this as settled.** Whether the task force should be
-involved in benchmarking or comparing algorithms **at all** is an open conflict, carried to
-the next session. Dom Guinard's position is "a container to expose benchmarks, not defining
-nor judging benchmarks"; Leonard Rosenthol's is that C2PA must remain completely agnostic to
-algorithms and should neither store nor facilitate comparisons. Alexander Solonsky proposed
-the most useful reframe on the table — drop "benchmarking" for **conformance checks**,
-filtering watermarks that meet a minimum C2PA requirement rather than ranking them. Next
-steps recorded: the group continues the debate, and Dom consults Leonard on a path to
-approval. **Nothing here may be reported as a C2PA position, a task force output, or a
-direction of travel.**
-
-**What is now true, and constrains us.** From John Collomosse's review "Watermark Benchmarks
-in 2026":
-
-- **Only error-corrected capacity counts.** FEC (Reed–Solomon / BCH) typically consumes
-  20–30% of the payload to survive ~5% bit flips. A **100-bit raw channel with BCH guarding
-  8 bit-flips leaves roughly 40 bits of usable ID space.** Papers report raw capacity; only
-  the corrected figure describes what an implementer gets. He cited an audio algorithm
-  advertising 512 bits/sec raw whose channel actually differentiates 2^5 = 32 IDs.
-- **64 bits is not enough for a global identifier.** Random assignment puts it inside the
-  birthday bound; the floor is **70–80 bits**. If we ever discuss soft-binding identifiers,
-  use that number, not "64 is fine".
-- **Removal is always possible** — see C21. Modern attacks are regeneration/GenAI cycles and
-  targeted white-box.
-- **Quality metrics: SSIM is saturated and largely useless post-2020.** Use SSIMULACRA2 /
-  LPIPS / VMAF for image and video, PESQ / ViSQOL / (SI-)SNR for audio. No metric beats a
-  user study.
-- **Text "watermarks" are mostly token-distribution fingerprints** (red-green schemes), not
-  watermarks in the signal-processing sense. Zero-bit "is it AI?" detection is generally
-  built on top of a multi-bit scheme — **SynthID is a yes/no decision via Hamming distance
-  against a secret multi-bit pattern**, which is worth stating precisely wherever we describe
-  our own SynthID work (C9).
-- **No existing benchmark covers provenance-relevant scenarios** (social, creative, print).
-  Existing ones cover few techniques, optimise for adversarial removal, have sparsely
-  populated leaderboards with very little commercial engagement, and do no co-existence
-  testing.
-
-**⚠️ These numbers bind us; they are not yet citable by us.** The slides live in the C2PA
-Slack and were not circulated publicly, so a reader cannot check them. Under the cardinal
-rule that makes them sound input for *restraining* our claims and an unacceptable source for
-*making* one. **Do not publish any of the figures above attributed to this presentation.**
-The birthday bound is independently derivable and may be stated on its own arithmetic; the
-512-bits/sec example may not be repeated at all.
-
-**What IS publicly checkable, and is the better citation.** The registry context is
-`c2pa-org/softbinding-algorithm-list` **issue #61** (open, filed 2026-07-10): an optional
-per-entry `robustnessEvidence` field — methodology reference, corpus, harness link, test
-date, quantified result — **self-reported by each algorithm owner against a shared
-reproducible method, explicitly not a cross-vendor ranking**. It exists because **PR #60**
-(merged) had to rescope one entry's robustness description "to match measured behavior":
-the prior wording claimed robustness to synonym-level paraphrase, and a reproducible
-benchmark on the PAN'26 corpus showed balanced accuracy of **0.99 under length-preserving
-synonym substitution but 0.52 — chance — under substantive lexical paraphrase**. Both are
-public and verifiable at github.com/c2pa-org/softbinding-algorithm-list.
-
-**Why that matters here more than anywhere else.** #61 exists because a registry carried
-prose robustness claims that nobody had run against the thing that would contradict them.
-That is the precise failure this register was built to prevent, appearing in the standards
-body we are joining. It is also the cheapest honest way for us to be visible in that room:
-contributing measured evidence under #61's methodology claims no rank and asserts nothing we
-have not run.
-
-**One thing we should be able to reproduce before claiming anything about recovery.** Sony
-and TVU Networks demonstrated C2PA manifest generation on live video with recovery via
-Teletrax watermarks, including a **"sad pass"** — the manifest is stripped during conversion
-and then recovered from the watermark. That demo is the clearest statement of what a soft
-binding is *for*. **We have not reproduced it and must not describe soft-binding recovery as
-something Provenote does.**
-
-**Promote to a capability claim only when:** we have run the measurement ourselves, on a
-named corpus, with the error-corrected capacity and the false-match bound stated alongside
-the result. Attending the task force is not evidence, and a seat on it is not an endorsement
-— see the C2PA contributor membership entry above.
+What that leaves in this public register is the part that is genuinely ours: the claims we
+make, the words we refuse to use, and evidence anyone can check on our own surfaces. C20 and
+C21 below are guards of that kind, and they stand on our own conduct rather than on anyone
+else's remarks.
 
 ## Corrections log
 
 The cardinal rule is only real if corrections are visible. Every claim we shipped and
 later found wrong gets a row here, permanently.
 
+### CORR-009 — Blog 5 said a C2PA credential is "gone the moment the text is extracted" (2026-09-24) — ✅ FIXED before publication
+
+**Caught three days before the post was due out** (scheduled 2026-09-27), while researching the
+landscape after CORR-008. Not caught by a routine, a test or a reviewer.
+
+**What we claimed.** Blog 5 `c2pa-for-writing` built its central contrast on this: *"A C2PA
+manifest binds to the file, not to the words… it cannot follow a paragraph once it leaves that
+document"*, and *"A C2PA credential rides with the file: robust while the file is intact, gone
+the moment the text is extracted."* The pull quote made it a slogan: *"A watermark travels with
+the words… a content credential travels with the file."*
+
+**Why it is wrong.** Specification **2.4 Annex A.8** defines embedding a manifest into
+*unstructured text itself*, using **Unicode variation selectors** interleaved with the
+characters; **§9.2.4** carries the normative reference, and **A.9** does the same for structured
+text. A credential built that way lives in the characters, not in a container around them. The
+neat opposition the post rested on is not a property of C2PA; it is a property of the
+**PDF** case we had generalised from. Verified at spec.c2pa.org on 2026-09-24, independently of
+the survey that flagged it.
+
+**What replaced it.** The PDF statement is kept, because it is true and concrete. The general
+claim is gone, A.8 and A.9 are named, and the new sentence carries its own limit: whether such
+a credential survives a given copy, paste or normalisation depends on whether the intervening
+tools preserve those characters, **which we have not tested and do not assert**.
+
+**Lesson, and it is the same one as CORR-008 two days earlier.** We took a true, checkable
+statement about one format and let it carry an untested general claim about a standard. The
+countable part was right both times. **Watch the sentence that generalises — it is doing work
+the evidence has not paid for.**
+
+**Guarded so it cannot come back:** `routines/manifest.json` now lists the three retracted
+phrases under `must_not_contain` and requires "A.8" under `post_must_contain`, so
+`tests/test_routine_sync.py` fails if the old framing returns or the correction is quietly
+removed.
+
 ### CORR-008 — "Text watermarking is provider gated and not generally accessible" (2026-09-23) — ✅ WITHDRAWN 2026-09-24
 
-**Who corrected us: John Collomosse (Adobe Research / University of Surrey)**, within minutes
-of reading it. We invited the correction — the letter asked him to say if the premise was
-wrong — and he did. The claim is recorded here rather than quietly dropped, which is the only
-reason the invitation was worth anything.
+**Corrected by a third party in private correspondence**, within minutes of reading it. We had
+invited the correction and received it. **The correspondent is not named, at their request, and
+that request was right**: a private exchange is not ours to publish or to attribute. The
+correction is recorded because our conduct is ours to record; the other person's is not.
 
 **What we claimed**, in correspondence on 2026-09-23 arguing that of the three provenance
 pillars only metadata is available for written work: *"Text watermarking exists but is provider
@@ -336,13 +301,14 @@ gated and not generally accessible."*
 
 **Why it is wrong.** Meta's **TextSeal** is open source — arXiv 2605.12456, code at
 `github.com/facebookresearch/textseal` — and it does **post-hoc** watermarking through LLM
-rephrasing, not only generation-time watermarking by the model provider. Collomosse also
-pointed to watermarking by inserting invisible Unicode variation selectors. Post-hoc text
-watermarking does not require a provider's cooperation at all, which is precisely what
-"provider gated" denied.
+rephrasing, not only generation-time watermarking by the model provider. Watermarking by
+inserting invisible Unicode variation selectors was also raised, and C2PA specification 2.4
+Annex A.8 defines exactly that technique for unstructured text. Post-hoc text watermarking
+does not require a provider's cooperation at all, which is precisely what "provider gated"
+denied.
 
-**He also dissolved the fingerprinting half of the same argument.** We said a perceptual hash
-has no analogue for text because paraphrase destroys it. His answer: compute a gist of the
+**The fingerprinting half of the same argument also failed.** We said a perceptual hash
+has no analogue for text because paraphrase destroys it. The answer put to us: compute a gist of the
 text, store it in the manifest or a link to it, and compare the asset to the gist **to
 validate the lookup** rather than to identify the work. Paraphrase resistance is then not the
 requirement. The objection was to a job we had assumed the pillar must do.
@@ -380,7 +346,7 @@ which is why you read both."*
 C2PA-aware tool that re-signs and records the edit as an action or ingredient**. Edited by a
 tool that is not C2PA-aware, the manifest is stripped or its hard binding breaks — which is
 the entire reason soft bindings exist, and exactly what Sony and TVU demonstrated as the
-"sad pass" at the Watermarking TF on 2026-09-16 (manifest stripped during conversion, then
+"sad pass" case noted internally (manifest stripped during conversion, then
 recovered from a watermark). The post's own body already states the accurate version four
 lines later — *"robust while the file is intact, gone the moment the text is extracted"* —
 so the quote contradicts the paragraph it sits beside.
@@ -451,7 +417,7 @@ counts, fails on a partial fetch, and skips only on a clean "nothing fetched"; a
 hollow it out — equalised weights, `verify_trust` defaulted to false — were confirmed to fail
 it. Suite 143 → 144, still 0 skipped.
 
-**The C2PA Watermarking Task Force was arguing about this exact thing the same morning:**
+**This was live in the field at the same time:**
 issue #61 on `softbinding-algorithm-list` exists because PR #60 measured a contributor's own
 robustness claim and it did not hold. Ours was one directory level away from the same
 outcome.

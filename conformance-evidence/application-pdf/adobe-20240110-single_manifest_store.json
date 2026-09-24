@@ -48,8 +48,8 @@
                 "action": "c2pa.created",
                 "softwareAgent": "Adobe Firefly Pipeline",
                 "parameters": {
-                  "firefly.operation": "text_to_image",
-                  "firefly.version": "1.0.5"
+                  "firefly.version": "1.0.5",
+                  "firefly.operation": "text_to_image"
                 },
                 "digitalSourceType": "http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia"
               }
