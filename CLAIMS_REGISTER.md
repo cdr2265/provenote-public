@@ -323,6 +323,49 @@ the result. Attending the task force is not evidence, and a seat on it is not an
 The cardinal rule is only real if corrections are visible. Every claim we shipped and
 later found wrong gets a row here, permanently.
 
+### CORR-008 — "Text watermarking is provider gated and not generally accessible" (2026-09-23) — ✅ WITHDRAWN 2026-09-24
+
+**Who corrected us: John Collomosse (Adobe Research / University of Surrey)**, within minutes
+of reading it. We invited the correction — the letter asked him to say if the premise was
+wrong — and he did. The claim is recorded here rather than quietly dropped, which is the only
+reason the invitation was worth anything.
+
+**What we claimed**, in correspondence on 2026-09-23 arguing that of the three provenance
+pillars only metadata is available for written work: *"Text watermarking exists but is provider
+gated and not generally accessible."*
+
+**Why it is wrong.** Meta's **TextSeal** is open source — arXiv 2605.12456, code at
+`github.com/facebookresearch/textseal` — and it does **post-hoc** watermarking through LLM
+rephrasing, not only generation-time watermarking by the model provider. Collomosse also
+pointed to watermarking by inserting invisible Unicode variation selectors. Post-hoc text
+watermarking does not require a provider's cooperation at all, which is precisely what
+"provider gated" denied.
+
+**He also dissolved the fingerprinting half of the same argument.** We said a perceptual hash
+has no analogue for text because paraphrase destroys it. His answer: compute a gist of the
+text, store it in the manifest or a link to it, and compare the asset to the gist **to
+validate the lookup** rather than to identify the work. Paraphrase resistance is then not the
+requirement. The objection was to a job we had assumed the pillar must do.
+
+**Where it appeared, and where it did not.** Correspondence only. It is **not** on any
+Provenote surface and **not** in this register's live rows — checked across the site and the
+published docs on 2026-09-24. The unsent letter carrying it was corrected. No blog, page or
+public claim has to be retracted.
+
+**What survives.** The narrower claim still stands, and is now on firmer evidence than when we
+made it: **no conformant product declares any text media type.** Re-counted 2026-09-24 by
+parsing `containers.generate` / `containers.validate` across all 219 products — zero non-empty
+text arrays. Yesterday's count searched for the string `text/plain` and found none, which was
+the right answer reached by the wrong method: the schema uses `textHtml`, `textUnstructured`
+and `textStructured`. **A search that matches nothing is not evidence of absence.** Encypher
+Corporation, named to us as the leading text implementer, is itself on the list at spec 2.2
+declaring image, video, audio and `application/pdf` — and no text.
+
+**Lesson.** Our argument bundled two very different statements: a checkable fact about a
+published list, and a general assertion about what technology is available. The first was
+sound. The second was an impression, and it reached a domain expert inside a week. **State the
+countable thing; do not let it carry an uncountable one alongside it.**
+
 ### CORR-007 — Blog 5 claimed a content credential "survives editing" (2026-09-16) — ✅ FIXED 2026-09-17
 
 **Found while substantiating C20/C21**, by grepping our own surfaces for robustness language

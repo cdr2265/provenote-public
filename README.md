@@ -27,10 +27,14 @@ discipline. So here it is.
 
 ## The corrections are the point
 
-The claims register contains a corrections log. We publish corrections rather than quietly
+The claims register carries a corrections log. We publish corrections rather than quietly
 fixing them, so the log will grow, and entries will be struck through and replaced. That is
-the system working, not a sign of trouble. A register that never changed would mean nobody
-was checking it.
+the system working, not a sign of trouble. A register that never changed would mean nobody was
+checking it.
+
+The most recent one is a good example. **CORR-008** records a claim we made in correspondence
+and got wrong, the expert who corrected us, and what replaced it. It is here because we said
+it would be.
 
 ## What we do not claim
 
@@ -40,8 +44,8 @@ was checking it.
   the conformance intake form on 23 September 2026. **We are not listed yet.**
 - That we detect Anthropic's Claude watermark. Detection entered private preview and we have
   no access. It is recorded as a check that did not run, never as a check that found nothing.
-- That a missing record is evidence of anything. Most documents carry no record of origin,
-  and that is normal.
+- That a missing record is evidence of anything. Most documents carry no record of origin, and
+  that is normal.
 
 ## What is deliberately not here
 
@@ -51,8 +55,7 @@ findings beside an account number is a shopping list, not transparency.
 
 The published set is assembled by an allowlist and then scanned before it is written, so a new
 file cannot be published by accident. If the scan finds an account number, an address, an
-infrastructure identifier, a contracted vendor name or key material, the build refuses to
-produce the repository at all.
+infrastructure identifier, a contracted vendor name or key material, the build refuses.
 
 ## Contact
 
