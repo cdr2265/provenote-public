@@ -254,6 +254,110 @@ else's remarks.
 The cardinal rule is only real if corrections are visible. Every claim we shipped and
 later found wrong gets a row here, permanently.
 
+### CORR-011 — Blog 5 quoted Annex A.8's purpose selectively (2026-09-25) — ✅ FIXED before publication
+
+**Caught two days before the post was due out** (scheduled 2026-09-27), while adding the
+quotations to `routines/manifest.json` so a routine would check them. Adding the guard is what
+found the defect: to pin the quotes we had to go back to A.8.1 and read the whole paragraph.
+
+**What we claimed.** The post said the specification "is explicit about why: the method is for
+*'content intended for copy-paste operations across different systems'*, *'ensuring that Content
+Credentials persist with the content itself across platforms'*." Both fragments are verbatim.
+Neither is misquoted.
+
+**Why it is wrong anyway.** A.8.1 "General" is **one paragraph**, and we quoted the first and
+third sentences while dropping what stands between and around them:
+
+- The scope is *"unstructured text where traditional file-based embedding is not practical"*.
+  Copy-paste content is introduced by **"such as"** — it is the specification's **example** of
+  that scope, not the method's purpose. We promoted an example to a purpose.
+- The sentence we skipped is a restriction: *"This approach **should only be used** with
+  unstructured text assets where **no other embedding method is feasible**."* A.8 is a **last
+  resort**, and we had made it sound like a designed-for-copy-paste feature.
+
+**A quotation can be verbatim and still misrepresent, by where it stops.** CORR-008 and
+CORR-009 were about a true statement carrying an untested generalisation; this one is about
+true words carrying a false emphasis. Our check for the first two — "is every quoted string
+accurate?" — passes this cleanly.
+
+**And the source was not misread. This is the part worth keeping.** The commit that introduced
+the defect, `bdf7bd9`, **quotes the missing sentence in its own message**, verbatim, and calls
+it *"a qualifier we should have been carrying"*. It then states that *"the post now says three
+true things from one paragraph"*. The post said two. The restriction was identified, written
+down, described as required — and never reached the copy in the same commit that said it had.
+
+So the failure is not reading. It is that **a commit message is a fourth surface, and nothing
+compares it to the diff it describes.** The other three surfaces — post, register row, routine
+prompt — are checked against each other by `tests/test_routine_sync.py`. The message asserting
+what the change did is checked by nobody, and here it was wrong about its own diff.
+
+**What replaced it.** The post now quotes the actual scope, marks copy-paste as the spec's
+example, and carries **three** qualifiers instead of two: the spec's last-resort restriction,
+the spec's "remains under review" caveat, and ours (we have not tested whether such a credential
+survives any given copy, paste or normalisation, and do not claim that it does).
+
+**Verified at the primary source.** All three quoted fragments confirmed character-for-character
+against §A.8.1 of the 2.4 specification, retrieved from `spec.c2pa.org` on 2026-09-25 and read in
+full rather than searched for.
+
+**Guarded so it cannot come back:** `routines/manifest.json` now requires "traditional
+file-based embedding is not practical", "no other embedding method is feasible" and "remains
+under review" under `post_must_contain`, and the two live cloud prompts carry a new check **3a**
+requiring all three as direct quotation and failing the publish if any is absent. The guard was
+**mutation-tested**: removing the last-resort sentence from the post turns
+`tests/test_routine_sync.py` red.
+
+**Lesson. A guard is worth writing even when you expect it to pass — writing it is what makes
+you re-read the source.** The drift we set out to close was procedural (a copy change made 47
+minutes after its routine was last updated). The defect we actually found was substantive, and
+nothing in the existing checks was ever going to surface it.
+
+### CORR-010 — "No conformant product declares any text media type" (2026-09-21 onward) — ✅ NARROWED 2026-09-24
+
+**Third instance this week of one failure: a count scoped to the wrong key.** CORR-008 searched
+for the string `text/plain` and found none, when the schema uses `textHtml`, `textUnstructured`
+and `textStructured`. This one reads those three keys correctly and misses a record that used
+neither.
+
+**What we claimed.** "Of the 219 products on the Conforming Products List, not one declares any
+text media type." Said in correspondence, carried in `docs/C2PA_VALIDATOR_APPLICATION.md`, and
+used in a draft paper.
+
+**What is actually there.** One record — **Digitality Consulting Secure Content Engine**
+(Digitality Consulting S.r.l., generator product) — declares, on **both** `generate` and
+`validate`:
+
+```
+"document": ["application/pdf", "txt"]
+```
+
+Note `document`, singular. The schema defines `documents`, plural, and defines the three text
+keys separately. **The list in fact uses ten distinct container keys across its records,
+including both spellings**: `audio`, `document`, `documents`, `fonts`, `image`, `mlModel`,
+`textHtml`, `textStructured`, `textUnstructured`, `video`. Verified 2026-09-24 by enumerating
+every key present rather than testing the keys we expected.
+
+**The claim, corrected and now narrower than it is comfortable to say:**
+
+> Of the 219 records retrieved on 2026-09-24, **zero declare any media type under the schema's
+> three text keys**. **One declares the token `txt`** — a file extension, not a media type —
+> **under a non-schema `document` key**, on both generate and validate.
+
+Both halves ship together or neither does. The second half is the interesting one: somebody
+intended to cover text and the schema had no place to put it.
+
+**A second error fell out of the same check.** Our PDF counts read only `documents` and so
+missed the same record. Corrected: **15 records declare `application/pdf` under generate and 17
+under validate** (13 distinct applicants), **of which 3 are typed `validatorProduct`** — Numbers
+Co. Ltd., Safe Creative SL, Timelimit Inc. The "3 of 24 validator products" figure survives; any
+figure of the form "only N products validate PDF" does not.
+
+**Lesson, and it is not the same as CORR-008's.** That one said: do not string-search structured
+data. This one says: **do not test for the keys you expect. Enumerate the keys that are there.**
+A schema tells you what is permitted, not what a publisher actually wrote, and `additionalProperties`
+was not set on the container objects, so non-schema keys validate cleanly and are invisible to any
+check that looks only for the documented ones.
+
 ### CORR-009 — Blog 5 said a C2PA credential is "gone the moment the text is extracted" (2026-09-24) — ✅ FIXED before publication
 
 **Caught three days before the post was due out** (scheduled 2026-09-27), while researching the

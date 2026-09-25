@@ -38,10 +38,18 @@ Credentials, Anthropic's Claude watermark, and OpenAI where it concerns their ow
 statement about their own product. These stay.
 
 **The boundary case to watch:** a factual statement about another company's product *status*
-— e.g. "Claude watermark — detection API not yet live." That is an integration reference and
-is fine, but it goes stale when they ship. The `provenote-detector-watch` routine polls for
-exactly that every three hours and emails the owner, so the dependency is monitored rather
-than assumed.
+— e.g. "Claude watermark — we have no access to detection." That is an integration reference
+and is fine, but it goes stale when they ship. The `provenote-detector-watch` routine polls
+for exactly that every three hours and emails the owner, so the dependency is monitored
+rather than assumed.
+
+**And this example went stale itself, which is the point.** It used to read *"detection API
+not yet live"* — true when written, false from **2026-09-01**, when detection entered private
+preview. **CORR-005.** The watch routine caught the change in 3.5 hours; what failed was
+propagation, and this file — the file that predicted the staleness — was one of the places it
+did not reach. **A sentence about an absence is still a claim about status, and goes stale
+the same way.** Prefer a statement about *our own* position ("we have no access") over one
+about the vendor's roadmap, because ours is one we control and can verify.
 
 **It went stale on 2026-09-01, and monitoring was not enough.** The routine fired within 3.5
 hours and the copy sweep that followed missed the homepage bullet carrying this exact
@@ -72,7 +80,12 @@ routine fires, grep the repo for the *old status wording* — not for the vendor
 8. **Pseudonyms are not a loophole.** "Detector C — marketed 99.12%, measured 66%" identifies
    a company as surely as naming it. Where a figure or anecdote uniquely identifies a vendor,
    either drop the identifying detail or drop the claim. Prefer **category-level** claims
-   ("vendors market 99%+; independent testing lands at 66–92%") which identify no one.
+   ("vendors market near-perfect accuracy; independent testing reports materially lower")
+   which identify no one. **The example deliberately carries no figure.** It used to read
+   "vendors market 99%+; independent testing lands at 66–92%" — **CORR-006 retracted that
+   measured half**, which rested on a vendor-published comparison presented as independent.
+   Anonymity and accuracy are separate tests, and this file only ever enforced the first:
+   a category-level claim identifies no one **and** still has to be true.
 
 ## Why this is also better positioning
 

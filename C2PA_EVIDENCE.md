@@ -170,3 +170,72 @@ reason to pause the queue. The threads stay apart until one of them closes.
 **Open:** the reply's closing line offers evidence for additional media types. If we intend to
 widen beyond `image/jpeg` and `application/pdf`, doing it before assessment completes is
 cheaper than amending a listed record.
+
+## Sample evidence, round 2 — TRUSTED, 2026-09-24
+
+**The first submission was rejected on its samples, correctly.** The Administrator's note:
+samples must be signed with certificates chaining to the official CA and TSA trust lists and
+**must produce a verdict of TRUSTED**. Ours were signed against an interim trust list that has
+been discontinued.
+
+**Measured, against the official list with `verify_trust` enabled:**
+
+| Sample | State | Issuer |
+|---|---|---|
+| our old JPEG, legacy 1.4 | `Valid` | C2PA Test Signing Cert |
+| our old PDF, adobe-20240110 | `Valid` | Adobe Inc. |
+| **their library's JPEG** | **`Trusted`** | **Google LLC** |
+| their library's PNG / MP4 / MP3 | `Trusted` | Google LLC |
+
+**The capability was always there; we were not asking for it.** `provenance_verify/c2pa_trust.py`
+loads the official anchors, and `scripts/build_conformance_evidence.py` hardcoded
+`verify_trust: False` — right for testing deliberately-broken vectors, wrong for a conformance
+submission. `scripts/build_submission_pack.py` now exists for the submission case and **deletes
+its own output** if any sample falls short of Trusted.
+
+Our vendored `C2PA-TRUST-LIST.pem` (30 anchors) and `C2PA-TSA-TRUST-LIST.pem` (22) were verified
+**byte-identical to the live copies** on 2026-09-24.
+
+### ✅ RESOLVED — both media types evidenced as Trusted, 2026-09-24
+
+**Sent 2026-09-24**, superseding the JPEG-only pack sent earlier the same day:
+
+| | Media type | State | Issuer | Provenance of the sample |
+|---|---|---|---|---|
+| `a-sample.jpeg` | `image/jpeg` | **Trusted** | Google LLC | the library the Programme supplied, unmodified |
+| `b-sample.pdf` | `application/pdf` | **Trusted** | OpenAI OpCo, LLC | **ours** — generated via OpenAI Media Service / ChatGPT |
+
+Both re-validated **from inside the zip** rather than from the source files. Zero caveats.
+
+**How the PDF gap was closed, since it was not obvious.** No publicly available PDF reaches
+Trusted: the supplied library holds none, and in `public-testfiles` both `2.2/pdf/good` and
+`2.2/pdf/bad` contain only a zero-byte README. Rather than wait, we found that **OpenAI Media
+Service is on the Conforming Products List as a generator product declaring
+`application/pdf`** — and generated our own sample through it. Found by scanning local PDFs for
+embedded manifests and validating all 72 candidates against the official list; exactly one
+reached Trusted, which proved the route before we used it.
+
+**The letter states the PDF is ours and how it was made.** An assessor who discovers that has
+reason to doubt everything else in the pack; an assessor who is told has reason to trust it.
+The offer to re-evidence from a different source is left open.
+
+**Still true and worth raising later, not in a submission thread:** Google is on the trust list
+and declares `application/pdf` on two conformant products, Google Media Processing Services and
+NotebookLM. A PDF from either would close this gap in the library for every future applicant.
+
+### ~~🔴 OPEN: there is no publicly available PDF that reaches Trusted~~ (RESOLVED above, kept for the record)
+
+`application/pdf` is half our assertion and the product's substance, and we cannot evidence it:
+
+- The library supplied to us holds six files — jpg, png, mp3, m4a, two mp4. **No PDF.**
+- `public-testfiles` **`2.2/pdf/good` and `2.2/pdf/bad` each contain only a zero-byte README.**
+- The only PDF that tree references is the one just rejected.
+
+**Asked of the Administrator 2026-09-24**, with a concrete suggestion rather than a bare request:
+**Google is on the trust list and declares `application/pdf` on two conformant products —
+Google Media Processing Services and NotebookLM.** A PDF from either, added to the same library,
+would settle it for us and for any other applicant asserting PDF.
+
+**Do not quietly drop the PDF assertion while this is open.** Amending an assertion because
+evidence is inconvenient is the opposite of the discipline the rest of this document records.
+
